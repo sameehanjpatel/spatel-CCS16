@@ -1,29 +1,37 @@
 var y = 100;
 var slider;
+var colorFrom;
+var colorTo;
+var rectStep = 10;
+
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
-  slider = createSlider(0, 255, 100);
-  slider.position(10, 10);
-  slider.style('width', '80px');
 }
 function draw() {
-  var val = slider.value();
-  background(val);
-  background(100);
+push();
+colorFrom = color(13,255,241);
+colorTo = color(62, 12, 232);
+for(var x=0; x < height; x += rectStep){
+		 noStroke();
+  		var lerpAmt = map(x,height,0, 0, 1.0);
+    	var lerpedCol = lerpColor(colorFrom, colorTo, lerpAmt);    
+		 fill(lerpedCol);
+    	rect(0,x,width,rectStep);
+  	}
+pop()
   noStroke();
-  frameRate(5);
   translate(width/2,height/2);
   fill(0);
+  frameRate(1);
   rotate(radians(frameCount%360));
   for(var i =0; i < 8; i++){
     push();
-    rotate(2*PI * i / 8);
-    //play around with the first parameter
+    rotate(TWO_PI * i / 8);
     fill(255);
     shape();
     pop();
-  }
+}
 }
 function shape() {
   fill(random(255));

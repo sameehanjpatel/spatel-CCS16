@@ -1,12 +1,12 @@
 function setup() {
-createCanvas(600,600)
+createCanvas(windowWidth,windowHeight)
 }
 
 function draw() {
-    if (mouseX>100 && mouseY>100){
-   rect(200,200,200,200); 
+    if (mouseX> width/2){
+   rect(mouseX,mouseY,200,200); 
   }
-  if(mouseX<100 && mouseY<100){
-    ellipse(200,200,200,200);
+  if(mouseX< width/2){
+    ellipse(mouseX,mouseY,200,200);
   }
 }
